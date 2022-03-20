@@ -1,0 +1,21 @@
+KS对接文档说明:
+请求方式:均是GET请求
+
+
+挑起接口:http://127.0.0.1:7661/ks
+参数说明: http://127.0.0.1:7661/ks?pay_id=快手ID&type=支付宝为1微信为2&money=支付金额
+接口示例:http://127.0.0.1:7661/ks?pay_id=32618349&type=2&money=1
+
+注意事项:当挑起支付宝时,Payurl为支付参数,需要二次请求进行适配
+二次请求接口:http://127.0.0.1:7661/GetAliPayById
+参数说明:http://127.0.0.1:7661/GetAliPayById?把响应参数Payurl复制粘贴即可
+
+
+查询订单接口
+说明:挑起支付时会返回CheckOrder_Data参数,此参数即为查询凭证标识
+挑起接口:http://127.0.0.1:7661/CheckKs
+参数说明:http://127.0.0.1:7661/GetAliPayById?把响应参数CheckOrder_Data直接复制粘贴进行拼接即可
+接口示例:http://127.0.0.1:7661/CheckKs?merchant_id=GM666814221030667033&out_order_no=AZ69mes4j-jf4h9
+
+
+特别注意:   接口后面要凭接一个 ? ,  然后 直接复制粘贴  进行拼接响应参数 发起GET请求即可
