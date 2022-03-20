@@ -3,14 +3,24 @@ const app = express();
 const checkKS = require('./ks/checkKSPay');
 const ksh5 = require('./ks/ksh5');
 let Payment = express.Router();
-const port = 7661;
-app.listen(port, () => {
-  console.log('服务已经启动!http://127.0.0.1:' + port);
+// const port = 7661;
+// app.listen(port, () => {
+//   console.log('服务已经启动!http://127.0.0.1:' + port);
+// });
+
+//启动命令：set PORT=3000 && node app
+app.listen(process.env.PORT, () => {
+  console.log(process.env.PORT);
 });
 
 app.use(express.urlencoded());
 app.use(express.json());
 app.use(express.static('public'));
+console.log('process.env  ----->  ', process.env);
+
+Payment.get('/', (req, res) => {
+  res.send('halo啊,Old铁!');
+});
 
 Payment.get('/ks', async (req, res) => {
   if (!req.query.pay_id) {
